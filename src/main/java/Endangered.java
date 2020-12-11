@@ -53,6 +53,12 @@ public class Endangered implements AnimalInt {
         }
 
             }
+    public static List<Endangered> all() {
+        String sql = "SELECT * FROM endangered_animals";
+        try (Connection con = DB.sql2o.open()) {
+            return con.createQuery(sql).executeAndFetch(Endangered.class);
+        }
+    }
 
         }
 

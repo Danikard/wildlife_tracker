@@ -30,7 +30,7 @@ public class Animal implements AnimalInt {
         }
     }
     @Override
-    public List<Endangered> save() {
+    public void save() {
         try(Connection con = DB.sql2o.open()) {
             String sql = "INSERT INTO animals (name) VALUES (:name)";
             this.id = (int) con.createQuery(sql, true)
@@ -38,7 +38,6 @@ public class Animal implements AnimalInt {
                     .executeUpdate()
                     .getKey();
         }
-        return null;
     }
 
     public static List<Animal> all() {
@@ -49,4 +48,3 @@ public class Animal implements AnimalInt {
     }
 
 }
-
